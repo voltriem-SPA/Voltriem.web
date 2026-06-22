@@ -1,0 +1,18 @@
+---
+const { page } = Astro.props;
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="mt-14 flex flex-wrap items-center gap-4" aria-label="Paginación">
+  {page.url.prev && (
+    <a href={page.url.prev} class="btn-secondary-voltriem">
+      <Icon name="lucide:arrow-left" size={18} /> Anterior
+    </a>
+  )}
+  <span class="rounded-full bg-soft px-4 py-2 text-sm font-semibold text-brand">Página {page.currentPage} de {page.lastPage}</span>
+  {page.url.next && (
+    <a href={page.url.next} class="btn-secondary-voltriem">
+      Siguiente <Icon name="lucide:arrow-right" size={18} />
+    </a>
+  )}
+</nav>

@@ -1,0 +1,26 @@
+---
+import Navbar from "./Navbar.astro";
+import Logo from "./Logo.astro";
+import { CONTACT } from "../consts";
+import { Icon } from "astro-icon/components";
+---
+
+<header class="header">
+  <div class="navbar w-full py-2">
+    <div class="container grid grid-cols-[170px_1fr_auto] items-center gap-3 lg:grid-cols-[210px_1fr_auto]">
+      <Logo compact={true} />
+      <Navbar />
+      <div class="ml-auto flex items-center gap-2">
+        <a href={CONTACT.telPrimary} class="hidden xl:inline-flex btn-secondary-voltriem btn-sm">
+          <Icon name="lucide:phone-call" size={18} /> Llamar
+        </a>
+        <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-primary-voltriem btn-sm">
+          <Icon name="simple-icons:whatsapp" size={18} /> Cotizar por WhatsApp
+        </a>
+        <label for="my-drawer-2" aria-label="Abrir menú" class="btn btn-square btn-ghost text-brand lg:hidden">
+          <Icon name="lucide:menu" size={28} />
+        </label>
+      </div>
+    </div>
+  </div>
+</header>

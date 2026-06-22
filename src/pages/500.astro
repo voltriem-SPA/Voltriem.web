@@ -1,0 +1,7 @@
+---
+import Layout from "../layouts/Main.astro";
+import { withBase } from "../utils/paths";
+---
+<Layout title="Error del sitio" description="Error interno en VOLTRIEM SpA.">
+  <section class="section bg-white"><div class="container max-w-3xl text-center"><h1 class="text-brand">Ocurrió un error</h1><p class="text-slate-600">Intenta nuevamente o contacta a VOLTRIEM SpA por WhatsApp.</p><a href={withBase('/')} class="btn-primary-voltriem mt-6">Volver al inicio</a></div></section>
+</Layout>

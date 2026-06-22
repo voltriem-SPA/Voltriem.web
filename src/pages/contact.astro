@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Main.astro";
+import { CONTACT } from "../consts";
+import { Icon } from "astro-icon/components";
+import { withBase } from "../utils/paths";
+---
+
+<Layout title="Contacto" description="Contacta a VOLTRIEM SpA para servicios eléctricos certificados en Concepción y Gran Concepción.">
+  <section class="section bg-white">
+    <div class="container max-w-4xl text-center">
+      <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Contacto</p>
+      <h1 class="text-brand">Hablemos de tu requerimiento eléctrico</h1>
+      <p class="text-slate-600">Para una respuesta rápida, usa WhatsApp. También puedes llamar o enviar un correo.</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="btn-primary-voltriem btn-lg"><Icon name="simple-icons:whatsapp" size={20} /> Cotizar por WhatsApp</a>
+        <a href={CONTACT.telPrimary} class="btn-secondary-voltriem btn-lg"><Icon name="lucide:phone-call" size={20} /> Llamar ahora</a>
+      </div>
+      <a href={withBase('/#contacto')} class="mt-8 inline-flex text-main hover:underline">Ver formulario completo en la página principal</a>
+    </div>
+  </section>
+</Layout>

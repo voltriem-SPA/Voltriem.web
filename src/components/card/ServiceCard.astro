@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { withBase } from "../../utils/paths";
+const { data, id } = Astro.props;
+---
+
+<article class="group h-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+  <a href={withBase(`/servicios/${id}`)} class="flex h-full flex-col">
+    {data.thumbnail && (
+      <Image src={data.thumbnail} alt={data.title} width="600" height="350" format="webp" quality={70} class="aspect-[16/10] w-full object-cover" />
+    )}
+    <div class="flex flex-1 flex-col p-6">
+      <h3 class="text-2xl text-brand group-hover:text-main">{data.title}</h3>
+      <p class="mb-6 text-sm text-slate-600">{data.description}</p>
+      <span class="btn-secondary-voltriem mt-auto w-full">Ver servicio <Icon name="lucide:arrow-up-right" size={16} /></span>
+    </div>
+  </a>
+</article>

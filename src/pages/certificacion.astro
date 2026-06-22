@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Main.astro";
+import { CONTACT } from "../consts";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="Certificación SEC" description="Normalizaciones, certificados TE1 y adecuación de instalaciones eléctricas bajo Pliegos Técnicos RIC con VOLTRIEM SpA.">
+  <section class="section bg-white">
+    <div class="container grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Certificación SEC</p>
+        <h1 class="text-brand">Normalizaciones eléctricas, TE1 y cumplimiento RIC</h1>
+        <p class="text-lg text-slate-600">VOLTRIEM SpA apoya la adecuación de instalaciones eléctricas bajo normativa vigente, modernización de tableros y tramitación de Certificados TE1 cuando corresponda.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="btn-primary-voltriem"><Icon name="simple-icons:whatsapp" size={18} /> Consultar regularización</a>
+          <a href={CONTACT.telPrimary} class="btn-secondary-voltriem"><Icon name="lucide:phone-call" size={18} /> Llamar</a>
+        </div>
+      </div>
+      <div class="rounded-[2rem] bg-brand p-8 text-white shadow-xl">
+        <h2 class="text-white">Qué incluye la evaluación</h2>
+        <ul class="mt-6 grid gap-4">
+          {['Revisión técnica de instalación existente', 'Identificación de riesgos y mejoras necesarias', 'Adecuación bajo Pliegos Técnicos RIC', 'Modernización de tableros y protecciones', 'Gestión de documentación y certificado TE1 cuando aplique'].map((item) => (
+            <li class="flex gap-3"><Icon name="lucide:check-circle-2" size={22} class="mt-1 shrink-0 text-electric" /> <span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

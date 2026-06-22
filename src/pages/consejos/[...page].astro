@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Main.astro";
+import Pagination from "../../components/pagination.astro";
+import NewsCard from "../../components/card/NewsCard.astro";
+import { withBase } from "../../utils/paths";
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("consejos")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  return paginate(posts, { pageSize: 6 });
+}
+const { page } = Astro.props;
+---
+
+<Layout title="Consejos eléctricos" description="Consejos eléctricos de VOLTRIEM SpA sobre seguridad, certificación SEC, eficiencia energética y mantención de instalaciones.">
+  <section class="section bg-white">
+    <div class="container">
+      <div class="breadcrumbs mb-8 text-sm">
+        <ul class="flex! flex-wrap text-slate-600">
+          <li><a href={withBase('/')} class="hover:text-main">Inicio</a></li>
+          <li>Consejos eléctricos</li>
+        </ul>
+      </div>
+      <div class="mb-10 max-w-3xl">
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Consejos eléctricos</p>
+        <h1 class="text-brand">Seguridad, normativa y eficiencia</h1>
+        <p class="text-slate-600">Contenido orientativo para reconocer riesgos, preparar regularizaciones y cuidar instalaciones eléctricas.</p>
+      </div>
+      <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {page.data.map((post) => (
+          <li><NewsCard {...post} /></li>
+        ))}
+      </ul>
+      {page.lastPage != 1 && <Pagination page={page} />}
+    </div>
+  </section>
+</Layout>

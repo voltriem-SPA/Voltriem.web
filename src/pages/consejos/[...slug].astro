@@ -1,0 +1,17 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("consejos");
+  return posts.map((post) => ({ params: { slug: post.id }, props: post }));
+}
+
+type Props = CollectionEntry<"consejos">;
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data} breadcrumbParent="Consejos eléctricos" backUrl="/consejos" title={post.data.title} description={post.data.description} image={post.data.thumbnail}>
+  <Content />
+</BlogPost>

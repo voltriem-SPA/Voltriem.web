@@ -1,0 +1,367 @@
+---
+import Layout from "../layouts/Main.astro";
+import { CONTACT, SITE_DESCRIPTION } from "../consts";
+import { Icon } from "astro-icon/components";
+import { withBase } from "../utils/paths";
+
+const whatsappText = encodeURIComponent('Hola VOLTRIEM SpA, necesito cotizar un servicio eléctrico.');
+const whatsappEmergency = `${CONTACT.whatsapp}?text=${encodeURIComponent('Hola VOLTRIEM SpA, tengo una emergencia eléctrica y necesito asistencia. Comuna: ')}`;
+
+const trustBadges = ['Electricistas certificados', 'Emergencias 24/7', 'Trabajos garantizados', 'Boleta y factura', 'Normativa SEC'];
+
+const confidence = [
+  { icon: 'lucide:shield-check', title: 'Certificación SEC', text: 'Servicios ejecutados bajo normativa vigente y criterios técnicos responsables.' },
+  { icon: 'lucide:badge-check', title: 'Garantía técnica 12 meses', text: 'Aplicable exclusivamente a mano de obra, montaje y conexionado del servicio realizado.' },
+  { icon: 'lucide:clock-3', title: 'Atención 24/7', text: 'Respuesta para emergencias eléctricas sujetas a disponibilidad y evaluación técnica.' },
+  { icon: 'lucide:building-2', title: 'Empresas y particulares', text: 'Soluciones para industrias, comercios, hogares, edificios y comunidades.' },
+];
+
+const industrialServices = [
+  { icon: 'lucide:factory', title: 'Proyectos e instalaciones eléctricas', text: 'Montaje de canalizaciones industriales, circuitos dedicados de fuerza 380V, cableado estructurado, racks de datos e instalaciones especiales para servicios de salud y locales comerciales.' },
+  { icon: 'lucide:wrench', title: 'Mantenimiento y reparación', text: 'Diagnóstico urgente de fallas, reparación de circuitos trifásicos, motores eléctricos, extractores de aire industriales y planes de mantenimiento preventivo para tableros.' },
+  { icon: 'lucide:gauge', title: 'Estudios de consumo y eficiencia energética', text: 'Monitoreo instrumental de maquinaria bajo carga, análisis del factor de potencia para evitar multas por energía reactiva e informes de consumo en kWh.' },
+  { icon: 'lucide:file-check-2', title: 'Normalizaciones y trámites SEC', text: 'Adecuación de instalaciones bajo Pliegos Técnicos RIC, modernización de tableros eléctricos y tramitación de Certificados TE1.' },
+];
+
+const residentialServices = [
+  { icon: 'lucide:siren', title: 'Emergencias y reparaciones', text: 'Localización rápida de cortocircuitos y fugas de corriente, reparación de enchufes o interruptores dañados y asistencia ante cortes de luz residenciales.' },
+  { icon: 'lucide:shield-alert', title: 'Tableros y seguridad eléctrica', text: 'Actualización de automáticos y diferenciales bajo norma, ordenamiento de tableros antiguos y habilitación de líneas independientes para cocinas, hornos o aire acondicionado.' },
+  { icon: 'lucide:lightbulb', title: 'Iluminación y remodelaciones', text: 'Proyectos de iluminación LED eficiente para interiores, patios y fachadas, cableado para ampliaciones e instalación de sistemas de citofonía.' },
+  { icon: 'lucide:clipboard-check', title: 'Regularizaciones y certificados', text: 'Declaraciones y trámites TE1 ante la SEC, aumentos de capacidad de empalme para el hogar y regularización de propiedades para trámites bancarios o municipales.' },
+];
+
+const why = [
+  'Electricistas certificados',
+  'Trabajo bajo normativa vigente',
+  'Diagnóstico técnico claro',
+  'Soluciones para empresas y hogares',
+  'Garantía de 12 meses',
+  'Atención ordenada, segura y profesional',
+  'Entrega de boleta y factura',
+  'Cotización según servicio',
+];
+
+const coverage = ['Concepción', 'Talcahuano', 'San Pedro de la Paz', 'Chiguayante', 'Hualpén', 'Penco', 'Tomé', 'Coronel', 'Lota', 'Hualqui', 'Otras comunas cercanas previa coordinación'];
+
+const gallery = [
+  { img: '/img/placeholders/trabajo-1.jpg', title: 'Antes y después', text: 'Espacio preparado para registrar mejoras reales de instalación.' },
+  { img: '/img/placeholders/trabajo-2.jpg', title: 'Tableros eléctricos', text: 'Ordenamiento, protecciones y revisión técnica.' },
+  { img: '/img/placeholders/trabajo-3.jpg', title: 'Canalizaciones', text: 'Montaje limpio para soluciones domiciliarias y comerciales.' },
+  { img: '/img/placeholders/trabajo-4.jpg', title: 'Iluminación', text: 'Proyectos LED eficientes para interiores y exteriores.' },
+  { img: '/img/placeholders/trabajo-5.jpg', title: 'Instalaciones domiciliarias', text: 'Líneas, enchufes, interruptores y seguridad eléctrica.' },
+  { img: '/img/placeholders/trabajo-6.jpg', title: 'Trabajos comerciales', text: 'Locales, oficinas y espacios de atención a público.' },
+];
+---
+
+<Layout title="Inicio" description={SITE_DESCRIPTION}>
+  <section id="inicio" class="gradient-hero grid-pattern relative overflow-hidden text-white">
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,37,53,.96),rgba(18,52,74,.72),rgba(18,52,74,.92))]"></div>
+    <div class="container relative grid min-h-[calc(100vh-84px)] items-center gap-12 py-20 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
+      <div data-animate>
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-electric backdrop-blur">
+          <Icon name="lucide:zap" size={18} /> Servicios eléctricos certificados
+        </p>
+        <h1>Servicios eléctricos certificados en Concepción y Gran Concepción</h1>
+        <p class="max-w-3xl text-lg text-slate-200 lg:text-xl">Instalaciones, mantenciones, emergencias, normalizaciones SEC y soluciones eléctricas para empresas, comercios, hogares y comunidades.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          {trustBadges.map((badge) => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+              <Icon name="lucide:check-circle-2" size={16} /> {badge}
+            </span>
+          ))}
+        </div>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a href={`${CONTACT.whatsapp}?text=${whatsappText}`} target="_blank" rel="noopener noreferrer" class="btn-electric btn-lg">
+            <Icon name="simple-icons:whatsapp" size={22} /> Cotizar por WhatsApp
+          </a>
+          <a href={withBase('/#servicios')} class="btn btn-lg rounded-xl border-white/25 bg-white/10 text-white hover:bg-white hover:text-brand">
+            Ver servicios
+            <Icon name="lucide:arrow-down" size={20} />
+          </a>
+        </div>
+      </div>
+
+      <div class="relative" data-animate>
+        <div class="absolute -left-8 top-12 hidden h-40 w-40 rounded-full bg-main/25 blur-3xl lg:block"></div>
+        <div class="absolute -right-8 bottom-12 hidden h-48 w-48 rounded-full bg-electric/20 blur-3xl lg:block"></div>
+        <div class="relative rounded-[2rem] border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur-xl">
+          <div class="rounded-[1.5rem] bg-white p-6 shadow-2xl">
+            <img src={withBase('/logos/voltriem-logo-fondo-claro.jpg')} alt="Logo VOLTRIEM SpA" width="720" height="720" class="mx-auto h-auto w-full max-w-[420px] object-contain" loading="eager" />
+          </div>
+          <div class="mt-5 grid gap-4 sm:grid-cols-3">
+            <div class="card-dark">
+              <Icon name="lucide:file-check-2" size={30} class="text-electric" />
+              <p class="mt-3 font-bold">Certificación SEC</p>
+            </div>
+            <div class="card-dark">
+              <Icon name="lucide:badge-check" size={30} class="text-main" />
+              <p class="mt-3 font-bold">Garantía 12 meses</p>
+            </div>
+            <div class="card-dark">
+              <Icon name="lucide:building-2" size={30} class="text-electric" />
+              <p class="mt-3 font-bold">Empresas y particulares</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-soft" aria-labelledby="confianza-title">
+    <div class="container">
+      <div class="mx-auto mb-10 max-w-3xl text-center" data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Confianza técnica</p>
+        <h2 id="confianza-title" class="text-brand">Servicio eléctrico serio, seguro y respaldado</h2>
+        <p class="text-slate-600">VOLTRIEM SpA otorga una garantía técnica de 12 meses aplicable exclusivamente a la mano de obra, montaje y conexionado del servicio realizado.</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {confidence.map((item) => (
+          <article class="card-technical" data-animate>
+            <div class="mb-5 inline-flex rounded-2xl bg-brand p-3 text-electric"><Icon name={item.icon} size={28} /></div>
+            <h3 class="text-xl text-brand">{item.title}</h3>
+            <p class="text-sm text-slate-600">{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="section bg-white" aria-labelledby="servicios-title">
+    <div class="container">
+      <div class="max-w-3xl" data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Servicios principales</p>
+        <h2 id="servicios-title" class="text-brand">Soluciones eléctricas para cada requerimiento</h2>
+        <p class="text-slate-600">Trabajos bajo normativa vigente, diagnóstico técnico claro y cotización según el tipo de servicio, complejidad, ubicación y urgencia.</p>
+      </div>
+
+      <div id="empresas" class="mt-12" data-animate>
+        <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="font-bold text-main">A) Empresas, industrias y comercios</p>
+            <h3 class="text-brand">Servicios Industriales y Comerciales</h3>
+          </div>
+          <a href={withBase('/servicios')} class="btn-secondary-voltriem">Ver detalle</a>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {industrialServices.map((item) => (
+            <article class="card-technical">
+              <div class="mb-5 inline-flex rounded-2xl bg-brand p-3 text-electric"><Icon name={item.icon} size={28} /></div>
+              <h4 class="text-brand">{item.title}</h4>
+              <p class="text-sm text-slate-600">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div id="hogar" class="mt-16" data-animate>
+        <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="font-bold text-main">B) Hogares, edificios y comunidades</p>
+            <h3 class="text-brand">Servicios Residenciales y Copropiedades</h3>
+          </div>
+          <a href={`${CONTACT.whatsapp}?text=${encodeURIComponent('Hola VOLTRIEM SpA, quiero solicitar diagnóstico para un servicio residencial o de copropiedad.')}`} target="_blank" rel="noopener noreferrer" class="btn-primary-voltriem">Solicitar diagnóstico</a>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {residentialServices.map((item) => (
+            <article class="card-technical">
+              <div class="mb-5 inline-flex rounded-2xl bg-brand p-3 text-electric"><Icon name={item.icon} size={28} /></div>
+              <h4 class="text-brand">{item.title}</h4>
+              <p class="text-sm text-slate-600">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-brand text-white" aria-labelledby="porque-title">
+    <div class="container grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+      <div data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-electric">Por qué elegir VOLTRIEM SpA</p>
+        <h2 id="porque-title">Atención ordenada, segura y profesional</h2>
+        <p class="text-slate-200">El objetivo es entregar soluciones eléctricas responsables, con información clara para tomar decisiones y respaldo posterior al servicio ejecutado.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={CONTACT.telPrimary} class="btn-electric"><Icon name="lucide:phone-call" size={18} /> Llamar ahora</a>
+          <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="btn border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand"><Icon name="simple-icons:whatsapp" size={18} /> Cotizar</a>
+        </div>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2" data-animate>
+        {why.map((item) => (
+          <div class="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/8 p-4">
+            <Icon name="lucide:check-circle-2" size={22} class="mt-1 shrink-0 text-electric" />
+            <p class="font-semibold">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="emergencias" class="section bg-soft" aria-labelledby="emergencias-title">
+    <div class="container">
+      <div class="overflow-hidden rounded-[2rem] bg-dark shadow-2xl" data-animate>
+        <div class="grid gap-8 p-8 text-white lg:grid-cols-[1fr_auto] lg:items-center lg:p-12">
+          <div>
+            <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-red-500/15 px-4 py-2 text-sm font-bold text-red-100"><Icon name="lucide:siren" size={18} /> Emergencias eléctricas 24/7</p>
+            <h2 id="emergencias-title">Respuesta para fallas eléctricas urgentes</h2>
+            <p class="max-w-3xl text-slate-300">Respuesta para cortocircuitos, cortes de luz, fallas en tableros, fugas de corriente y problemas eléctricos urgentes.</p>
+            <p class="mt-4 text-sm text-slate-400">Emergencias sujetas a disponibilidad y evaluación técnica.</p>
+          </div>
+          <a href={whatsappEmergency} target="_blank" rel="noopener noreferrer" class="btn-electric btn-lg whitespace-nowrap">
+            <Icon name="simple-icons:whatsapp" size={22} /> Contactar emergencia
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cobertura" class="section bg-white" aria-labelledby="cobertura-title">
+    <div class="container grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+      <div data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Cobertura</p>
+        <h2 id="cobertura-title" class="text-brand">Servicios eléctricos en Concepción y Gran Concepción</h2>
+        <p class="text-slate-600">Prestamos servicios en Concepción, comunas del Gran Concepción y sectores cercanos según disponibilidad.</p>
+        <a href={withBase('/#contacto')} class="mt-6 inline-flex btn-secondary-voltriem">Ver cobertura y contacto</a>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-animate>
+        {coverage.map((commune) => (
+          <div class="rounded-2xl border border-slate-200 bg-soft px-4 py-3 font-semibold text-brand"><Icon name="lucide:map-pin" size={17} class="mr-2 inline text-main" />{commune}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-soft" aria-labelledby="trabajos-title">
+    <div class="container">
+      <div class="mb-10 max-w-3xl" data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Trabajos realizados</p>
+        <h2 id="trabajos-title" class="text-brand">Galería preparada para fotos reales</h2>
+        <p class="text-slate-600">Estructura lista para incorporar fotografías de antes y después, tableros, canalizaciones, iluminación, instalaciones domiciliarias y trabajos comerciales.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {gallery.map((item) => (
+          <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm" data-animate>
+            <!-- Reemplazar esta imagen por una foto real del trabajo cuando esté disponible. -->
+            <img src={withBase(item.img)} alt={`${item.title} - VOLTRIEM SpA`} width="900" height="620" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-xl text-brand">{item.title}</h3>
+              <p class="text-sm text-slate-600">{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" aria-labelledby="pagos-title">
+    <div class="container grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+      <div data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Pagos y documentos</p>
+        <h2 id="pagos-title" class="text-brand">Cotización clara según requerimiento</h2>
+        <p class="text-slate-600">Todos los valores son entregados mediante cotización, según tipo de servicio, complejidad técnica, ubicación y urgencia.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-animate>
+        {['Transferencia bancaria', 'Boleta', 'Factura', 'Atención a empresas y particulares'].map((item) => (
+          <div class="card-technical text-center">
+            <Icon name="lucide:receipt-text" size={32} class="mx-auto mb-3 text-main" />
+            <p class="font-bold text-brand">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section bg-brand text-white" aria-labelledby="contacto-title">
+    <div class="container grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
+      <div data-animate>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-electric">Contacto</p>
+        <h2 id="contacto-title">Solicita una cotización eléctrica</h2>
+        <p class="text-slate-200">Indica el tipo de servicio, comuna y urgencia. Priorizamos que el contacto por WhatsApp funcione siempre.</p>
+        <div class="mt-8 grid gap-4">
+          <a href={CONTACT.telPrimary} class="card-dark flex items-center gap-4 hover:bg-white/15"><Icon name="lucide:phone-call" size={26} class="text-electric" /><span><strong>Teléfono principal</strong><br />{CONTACT.phonePrimary}</span></a>
+          <a href={CONTACT.telSecondary} class="card-dark flex items-center gap-4 hover:bg-white/15"><Icon name="lucide:phone" size={26} class="text-electric" /><span><strong>Teléfono secundario</strong><br />{CONTACT.phoneSecondary}</span></a>
+          <a href={CONTACT.mailto} class="card-dark flex items-center gap-4 hover:bg-white/15"><Icon name="lucide:mail" size={26} class="text-electric" /><span><strong>Correo</strong><br />{CONTACT.email}</span></a>
+          <div class="card-dark flex items-center gap-4"><Icon name="lucide:map-pin" size={26} class="text-electric" /><span><strong>Ubicación base</strong><br />{CONTACT.location}</span></div>
+          <div class="card-dark flex items-center gap-4"><Icon name="lucide:clock-3" size={26} class="text-electric" /><span><strong>Horario</strong><br />{CONTACT.schedule}<br />{CONTACT.emergency}</span></div>
+        </div>
+        <div class="mt-6 flex gap-3">
+          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" class="btn border-white/20 bg-white/10 text-white hover:bg-main"><Icon name="simple-icons:instagram" size={18} /> Instagram</a>
+          <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" class="btn border-white/20 bg-white/10 text-white hover:bg-main"><Icon name="simple-icons:tiktok" size={18} /> TikTok</a>
+        </div>
+      </div>
+
+      <form id="contact-form" class="rounded-[2rem] bg-white p-6 text-dark shadow-2xl lg:p-8" data-animate>
+        <h3 class="text-brand">Enviar solicitud</h3>
+        <p class="mb-6 text-sm text-slate-600">El formulario abre WhatsApp con un mensaje prellenado. GitHub Pages no requiere servidor para esta función.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="form-control">
+            <span class="label-text font-semibold text-brand">Nombre</span>
+            <input name="nombre" type="text" class="input input-bordered w-full" placeholder="Tu nombre" required />
+          </label>
+          <label class="form-control">
+            <span class="label-text font-semibold text-brand">Teléfono</span>
+            <input name="telefono" type="tel" class="input input-bordered w-full" placeholder="+56 9..." required />
+          </label>
+          <label class="form-control">
+            <span class="label-text font-semibold text-brand">Correo</span>
+            <input name="correo" type="email" class="input input-bordered w-full" placeholder="correo@ejemplo.cl" />
+          </label>
+          <label class="form-control">
+            <span class="label-text font-semibold text-brand">Tipo de servicio</span>
+            <select name="servicio" class="select select-bordered w-full" required>
+              <option value="">Seleccionar</option>
+              <option>Emergencia eléctrica</option>
+              <option>Instalación eléctrica</option>
+              <option>Mantención o reparación</option>
+              <option>Normalización SEC / TE1</option>
+              <option>Tablero eléctrico</option>
+              <option>Iluminación</option>
+              <option>Otro servicio</option>
+            </select>
+          </label>
+          <label class="form-control sm:col-span-2">
+            <span class="label-text font-semibold text-brand">Comuna</span>
+            <input name="comuna" type="text" class="input input-bordered w-full" placeholder="Ej: Concepción, Talcahuano, Hualpén" required />
+          </label>
+          <label class="form-control sm:col-span-2">
+            <span class="label-text font-semibold text-brand">Mensaje</span>
+            <textarea name="mensaje" class="textarea textarea-bordered min-h-32 w-full" placeholder="Describe brevemente el problema o servicio que necesitas" required></textarea>
+          </label>
+        </div>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <button type="submit" class="btn-primary-voltriem flex-1"><Icon name="simple-icons:whatsapp" size={18} /> Enviar solicitud</button>
+          <a href={CONTACT.mailto} class="btn-secondary-voltriem flex-1"><Icon name="lucide:mail" size={18} /> Enviar correo</a>
+        </div>
+        <!-- Para conectar un backend futuro, reemplazar el script de WhatsApp por una integración con Formspree, Netlify Forms, API propia o servicio equivalente. -->
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.querySelector('#contact-form');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const message = [
+      'Hola VOLTRIEM SpA, quiero solicitar una cotización.',
+      `Nombre: ${data.get('nombre') || ''}`,
+      `Teléfono: ${data.get('telefono') || ''}`,
+      `Correo: ${data.get('correo') || ''}`,
+      `Tipo de servicio: ${data.get('servicio') || ''}`,
+      `Comuna: ${data.get('comuna') || ''}`,
+      `Mensaje: ${data.get('mensaje') || ''}`,
+    ].join('\n');
+    window.open(`https://wa.me/56967696216?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+  });
+
+  const animated = document.querySelectorAll('[data-animate]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  animated.forEach((item) => observer.observe(item));
+</script>

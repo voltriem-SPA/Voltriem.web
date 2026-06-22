@@ -1,0 +1,16 @@
+---
+import { NAV_MENU } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<nav class="hidden lg:block mx-auto" aria-label="Navegación principal">
+  <ul class="menu menu-horizontal gap-x-1 xl:gap-x-3">
+    {NAV_MENU.map((item) => (
+      <li>
+        <HeaderLink href={item.url} class="rounded-xl px-3 py-2 text-brand hover:bg-slate-50">
+          {item.title}
+        </HeaderLink>
+      </li>
+    ))}
+  </ul>
+</nav>

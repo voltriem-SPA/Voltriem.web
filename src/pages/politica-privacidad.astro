@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Main.astro";
+import { CONTACT } from "../consts";
+---
+
+<Layout title="Política de privacidad" description="Política de privacidad de VOLTRIEM SpA.">
+  <section class="section bg-white">
+    <div class="container max-w-4xl post">
+      <h1 class="text-brand">Política de privacidad</h1>
+      <p>VOLTRIEM SpA utiliza los datos enviados por formularios, WhatsApp, correo o llamadas únicamente para responder solicitudes de cotización, coordinar visitas técnicas y prestar servicios eléctricos.</p>
+      <h2>Datos que se pueden solicitar</h2>
+      <ul>
+        <li>Nombre y datos de contacto.</li>
+        <li>Comuna o ubicación general del servicio.</li>
+        <li>Descripción del requerimiento eléctrico.</li>
+      </ul>
+      <h2>Uso de la información</h2>
+      <p>La información se usa para comunicación comercial y técnica relacionada con el servicio solicitado. No se vende información personal a terceros.</p>
+      <h2>Contacto</h2>
+      <p>Para consultas sobre privacidad, escribe a <a href={CONTACT.mailto}>{CONTACT.email}</a>.</p>
+    </div>
+  </section>
+</Layout>

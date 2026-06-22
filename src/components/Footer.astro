@@ -1,0 +1,50 @@
+---
+import Logo from "./Logo.astro";
+import { CONTACT } from "../consts";
+import { withBase } from "../utils/paths";
+import { Icon } from "astro-icon/components";
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand text-white">
+  <div class="container grid gap-10 py-14 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
+    <div>
+      <Logo mode="dark" />
+      <p class="mt-5 max-w-md text-slate-200">{CONTACT.slogan}</p>
+      <p class="mt-4 max-w-md text-sm text-slate-300">Servicios eléctricos certificados para empresas, comercios, hogares y copropiedades en Concepción y Gran Concepción.</p>
+      <div class="mt-6 flex gap-3">
+        <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" class="btn btn-square border-white/15 bg-white/10 hover:bg-main" aria-label="Instagram VOLTRIEM SpA"><Icon name="simple-icons:instagram" size={20} /></a>
+        <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" class="btn btn-square border-white/15 bg-white/10 hover:bg-main" aria-label="TikTok VOLTRIEM SpA"><Icon name="simple-icons:tiktok" size={20} /></a>
+        <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="btn btn-square border-white/15 bg-white/10 hover:bg-main" aria-label="WhatsApp VOLTRIEM SpA"><Icon name="simple-icons:whatsapp" size={20} /></a>
+      </div>
+    </div>
+    <nav class="grid gap-3 content-start">
+      <h3 class="text-xl text-electric">Servicios</h3>
+      <a href={withBase('/#empresas')} class="hover:text-electric">Industriales y comerciales</a>
+      <a href={withBase('/#hogar')} class="hover:text-electric">Residenciales y copropiedades</a>
+      <a href={withBase('/certificacion')} class="hover:text-electric">Certificación SEC y TE1</a>
+      <a href={withBase('/#emergencias')} class="hover:text-electric">Emergencias eléctricas</a>
+    </nav>
+    <nav class="grid gap-3 content-start">
+      <h3 class="text-xl text-electric">Información</h3>
+      <a href={withBase('/#cobertura')} class="hover:text-electric">Cobertura</a>
+      <a href={withBase('/consejos')} class="hover:text-electric">Consejos eléctricos</a>
+      <a href={withBase('/politica-privacidad')} class="hover:text-electric">Política de privacidad</a>
+      <a href={withBase('/terminos-condiciones')} class="hover:text-electric">Términos y condiciones</a>
+    </nav>
+    <div class="grid gap-3 content-start">
+      <h3 class="text-xl text-electric">Contacto</h3>
+      <a href={CONTACT.telPrimary} class="hover:text-electric">{CONTACT.phonePrimary}</a>
+      <a href={CONTACT.telSecondary} class="hover:text-electric">{CONTACT.phoneSecondary}</a>
+      <a href={CONTACT.mailto} class="hover:text-electric">{CONTACT.email}</a>
+      <p class="text-slate-300">{CONTACT.location}</p>
+      <p class="text-sm text-slate-300">{CONTACT.schedule}</p>
+    </div>
+  </div>
+  <div class="border-t border-white/10 py-6">
+    <div class="container flex flex-col gap-2 text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} VOLTRIEM SpA. Todos los derechos reservados.</p>
+      <p>Trabajos bajo normativa vigente · Servicio garantizado</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+import { formatFrontmatterDate } from "../../utils/date";
+import { Image } from "astro:assets";
+import { withBase } from "../../utils/paths";
+const { id, data } = Astro.props;
+---
+
+<article class="group h-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+  <a href={withBase(`/consejos/${id}`)} class="flex h-full flex-col">
+    {data.thumbnail && <Image src={data.thumbnail} alt={data.title} width="600" height="350" format="webp" quality={70} class="aspect-[16/10] w-full object-cover" />}
+    <div class="flex flex-1 flex-col p-6">
+      <p class="mb-3 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <span class="rounded-full bg-main/10 px-3 py-1 text-main">{data.category.title}</span>
+        <time datetime={data.pubDate.toISOString()}>{formatFrontmatterDate(data.pubDate)}</time>
+      </p>
+      <h3 class="text-2xl text-brand group-hover:text-main">{data.title}</h3>
+      <p class="mb-6 text-sm text-slate-600">{data.description}</p>
+      <span class="btn-secondary-voltriem mt-auto w-full">Leer consejo <Icon name="lucide:arrow-up-right" size={16} /></span>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import FormattedDate from "../components/FormattedDate.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "./Main.astro";
+import { CONTACT } from "../consts";
+import { withBase } from "../utils/paths";
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  thumbnail,
+  author,
+  category,
+  breadcrumbParent = "Consejos eléctricos",
+  backUrl = "/consejos",
+} = Astro.props;
+---
+
+<Layout title={title} description={description} image={thumbnail}>
+  <article class="post bg-white">
+    <div class="container py-10 lg:py-16">
+      <div class="breadcrumbs mb-8 text-sm">
+        <ul class="flex! flex-wrap text-slate-600">
+          <li><a href={withBase('/')} class="hover:text-main">Inicio</a></li>
+          <li><a href={withBase(backUrl)} class="hover:text-main">{breadcrumbParent}</a></li>
+          <li>{title}</li>
+        </ul>
+      </div>
+      <header class="mx-auto max-w-4xl text-center">
+        <div class="mb-4 flex flex-wrap justify-center gap-3 text-sm text-slate-500">
+          {pubDate && <FormattedDate date={pubDate} />}
+          {updatedDate && <span>Actualizado: <FormattedDate date={updatedDate} /></span>}
+          {author && <span>Por {author.name}</span>}
+          {category && <span class="rounded-full bg-main px-3 py-1 font-semibold text-white">{category.title}</span>}
+        </div>
+        <h1 class="text-brand">{title}</h1>
+        <p class="mx-auto max-w-3xl text-lg text-slate-600">{description}</p>
+      </header>
+      {thumbnail && (
+        <div class="mx-auto mt-10 max-w-5xl">
+          <Image width={1200} height={620} src={thumbnail} alt={title} class="w-full rounded-3xl object-cover shadow-xl" format="webp" quality={70} fetchpriority="high" />
+        </div>
+      )}
+      <div class="prose mx-auto mt-10 max-w-4xl">
+        <slot />
+        <div class="mt-12 rounded-3xl bg-brand p-6 text-white">
+          <h2 class="mt-0! text-white">¿Necesitas ayuda técnica?</h2>
+          <p class="text-slate-200">Contacta a VOLTRIEM SpA para evaluar tu instalación eléctrica, regularización SEC o emergencia.</p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="btn-electric"><Icon name="simple-icons:whatsapp" size={18} /> Cotizar por WhatsApp</a>
+            <a href={CONTACT.telPrimary} class="btn border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand"><Icon name="lucide:phone-call" size={18} /> Llamar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

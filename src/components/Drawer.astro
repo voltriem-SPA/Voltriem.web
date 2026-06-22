@@ -1,0 +1,36 @@
+---
+import { CONTACT, NAV_MENU } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+import Logo from "./Logo.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<div class="drawer-side z-[60]">
+  <label for="my-drawer-2" aria-label="Cerrar menú" class="drawer-overlay"></label>
+  <aside class="menu min-h-full w-84 max-w-[88vw] bg-brand p-5 text-white">
+    <div class="mb-6 flex items-center justify-between">
+      <Logo mode="dark" compact={true} />
+      <label for="my-drawer-2" class="btn btn-square btn-ghost text-white" aria-label="Cerrar menú">
+        <Icon name="lucide:x" size={24} />
+      </label>
+    </div>
+    <ul class="grid gap-2">
+      {NAV_MENU.map((item) => (
+        <li>
+          <HeaderLink href={item.url} class="rounded-xl px-4 py-3 text-white hover:bg-white/10 hover:text-electric">
+            {item.title}
+          </HeaderLink>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-8 grid gap-3 rounded-2xl bg-white/10 p-4">
+      <p class="text-sm text-slate-200">Atención en Concepción y Gran Concepción</p>
+      <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="btn-electric w-full">
+        <Icon name="simple-icons:whatsapp" size={18} /> Cotizar por WhatsApp
+      </a>
+      <a href={CONTACT.telPrimary} class="btn border-white/20 bg-white text-brand hover:bg-soft">
+        <Icon name="lucide:phone-call" size={18} /> {CONTACT.phonePrimary}
+      </a>
+    </div>
+  </aside>
+</div>

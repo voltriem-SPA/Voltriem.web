@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { withBase } from "../utils/paths";
+
+type Props = HTMLAttributes<"a">;
+const { href = '/', class: className, ...props } = Astro.props;
+const finalHref = href.startsWith('http') || href.startsWith('tel:') || href.startsWith('mailto:') ? href : withBase(href);
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const targetPath = href.split('#')[0].replace(/\/$/, '') || '/';
+const hasAnchor = href.includes('#');
+const isActive = !hasAnchor && (targetPath === '/' ? current === '/' || current === import.meta.env.BASE_URL.replace(/\/$/, '') : current.endsWith(targetPath));
+---
+
+<a href={finalHref} class:list={[className, { active: isActive }]} {...props}>
+  <slot />
+</a>
+<style>
+  a.active {
+    color: var(--green);
+  }
+</style>

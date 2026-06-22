@@ -1,0 +1,18 @@
+---
+import { CONTACT } from "../consts";
+import { withBase } from "../utils/paths";
+const { mode = "light", compact = false } = Astro.props;
+const logoSrc = mode === "dark" ? "/logos/voltriem-logo-fondo-claro.jpg" : "/logos/voltriem-logo.png";
+---
+
+<a href={withBase('/')} class:list={["logo inline-flex items-center", {"rounded-2xl bg-white p-2 shadow-sm": mode === "dark"}]} aria-label="Ir al inicio de VOLTRIEM SpA">
+  <img
+    src={withBase(logoSrc)}
+    alt={`${CONTACT.business} - ${CONTACT.slogan}`}
+    width={compact ? "164" : "204"}
+    height={compact ? "64" : "78"}
+    loading="eager"
+    decoding="async"
+    class:list={["h-auto w-auto", compact ? "max-h-12" : "max-h-16"]}
+  />
+</a>

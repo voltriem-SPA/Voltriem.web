@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-main: #64A83D;
+  --color-electric: #F4D43D;
+  --color-brand: #12344A;
+  --color-brand-2: #14354A;
+  --color-dark: #111827;
+  --color-soft: #F8FAFC;
+}
+
+:root {
+  --brand: #12344A;
+  --brand-2: #14354A;
+  --green: #64A83D;
+  --yellow: #F4D43D;
+  --dark: #111827;
+  --soft: #F8FAFC;
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-padding-top: 92px;
+}
+
+body {
+  font-family: var(--font-atkinson), Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #F8FAFC;
+  color: #111827;
+}
+
+.container {
+  @apply max-w-7xl! mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-14 lg:py-24;
+}
+
+.header {
+  @apply sticky top-0 z-50 bg-white/92 backdrop-blur-xl border-b border-slate-200/80 shadow-sm;
+}
+
+.menu a {
+  @apply text-base font-medium hover:text-main;
+}
+
+.logo img {
+  display: block;
+  object-fit: contain;
+}
+
+@layer base {
+  h1 {
+    @apply font-bold text-4xl sm:text-5xl lg:text-[64px] mb-4 leading-[1.04] tracking-[-0.04em];
+  }
+
+  h2 {
+    @apply font-bold text-3xl sm:text-4xl lg:text-[48px] mb-4 leading-[1.12] tracking-[-0.03em];
+  }
+
+  h3 {
+    @apply font-bold text-2xl lg:text-3xl mb-3 leading-tight tracking-[-0.02em];
+  }
+
+  h4, .h4 {
+    @apply font-bold text-lg sm:text-xl lg:text-2xl mb-3;
+  }
+
+  p {
+    @apply leading-7;
+  }
+}
+
+.btn-primary-voltriem {
+  @apply btn rounded-xl border-0 bg-main text-white shadow-lg shadow-green-900/15 hover:bg-[#4f8f2f] hover:text-white;
+}
+
+.btn-secondary-voltriem {
+  @apply btn rounded-xl border border-brand/20 bg-white text-brand hover:bg-brand hover:text-white;
+}
+
+.btn-electric {
+  @apply btn rounded-xl border-0 bg-electric text-dark shadow-lg shadow-yellow-900/10 hover:bg-[#e8c92f] hover:text-dark;
+}
+
+.card-technical {
+  @apply rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl;
+}
+
+.card-dark {
+  @apply rounded-3xl border border-white/10 bg-white/8 p-6 backdrop-blur;
+}
+
+.badge-voltriem {
+  @apply inline-flex items-center gap-2 rounded-full border border-brand/10 bg-white px-4 py-2 text-sm font-semibold text-brand shadow-sm;
+}
+
+.gradient-hero {
+  background:
+    radial-gradient(circle at 12% 16%, rgba(244, 212, 61, 0.22), transparent 30%),
+    radial-gradient(circle at 92% 8%, rgba(100, 168, 61, 0.22), transparent 28%),
+    linear-gradient(135deg, #0d2535 0%, #12344A 52%, #0f2637 100%);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.post {
+  @apply text-slate-700;
+}
+
+.post h2, .post h3, .post h4, .post h5, .post h6 {
+  @apply mt-8 mb-3 font-bold text-brand;
+}
+
+.post p {
+  @apply my-4;
+}
+
+.post ol, .post ul {
+  @apply pl-5 grid gap-3 my-4;
+}
+
+.post ol {
+  @apply list-decimal;
+}
+.post ul {
+  @apply list-disc;
+}
+
+.breadcrumbs li {
+  @apply whitespace-pre-wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-animate] { opacity: 1; transform: none; transition: none; }
+}

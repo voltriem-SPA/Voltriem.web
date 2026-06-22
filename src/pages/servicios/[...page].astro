@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Main.astro";
+import Pagination from "../../components/pagination.astro";
+import ServiceCard from "../../components/card/ServiceCard.astro";
+import { withBase } from "../../utils/paths";
+
+export async function getStaticPaths({ paginate }) {
+  const service = (await getCollection("service")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+  return paginate(service, { pageSize: 6 });
+}
+const { page } = Astro.props;
+---
+
+<Layout title="Servicios eléctricos" description="Servicios eléctricos certificados de VOLTRIEM SpA para empresas, comercios, hogares y copropiedades en Concepción y Gran Concepción.">
+  <section class="section bg-white">
+    <div class="container">
+      <div class="breadcrumbs mb-8 text-sm">
+        <ul class="flex! flex-wrap text-slate-600">
+          <li><a href={withBase('/')} class="hover:text-main">Inicio</a></li>
+          <li>Servicios eléctricos</li>
+        </ul>
+      </div>
+      <div class="mb-10 max-w-3xl">
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Servicios</p>
+        <h1 class="text-brand">Servicios eléctricos certificados</h1>
+        <p class="text-slate-600">Instalaciones, mantenciones, emergencias, normalizaciones SEC y soluciones técnicas para empresas y hogares.</p>
+      </div>
+      <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {page.data.map((post) => (
+          <li><ServiceCard {...post} /></li>
+        ))}
+      </ul>
+      {page.lastPage != 1 && <Pagination page={page} />}
+    </div>
+  </section>
+</Layout>

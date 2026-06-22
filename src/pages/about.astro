@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Main.astro";
+import { CONTACT } from "../consts";
+import { Icon } from "astro-icon/components";
+import { withBase } from "../utils/paths";
+---
+
+<Layout title="Empresa" description="VOLTRIEM SpA es una empresa chilena de servicios eléctricos certificados con base en Concepción.">
+  <section class="section bg-white">
+    <div class="container grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-main">Empresa</p>
+        <h1 class="text-brand">VOLTRIEM SpA</h1>
+        <p class="text-lg text-slate-600">Empresa de servicios eléctricos certificados para clientes industriales, comerciales, residenciales y copropiedades en Concepción y Gran Concepción.</p>
+        <p class="mt-4 text-slate-600">Nuestro enfoque es entregar atención técnica responsable, ordenada y segura, con diagnóstico claro, trabajo bajo normativa vigente y respaldo posterior al servicio realizado.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" class="btn-primary-voltriem"><Icon name="simple-icons:whatsapp" size={18} /> Cotizar por WhatsApp</a>
+          <a href={CONTACT.mailto} class="btn-secondary-voltriem"><Icon name="lucide:mail" size={18} /> Enviar correo</a>
+        </div>
+      </div>
+      <div class="rounded-[2rem] bg-soft p-8 shadow-sm">
+        <img src={withBase('/logos/voltriem-logo-fondo-claro.jpg')} alt="VOLTRIEM SpA" class="mx-auto max-w-md rounded-3xl" />
+      </div>
+    </div>
+  </section>
+</Layout>
