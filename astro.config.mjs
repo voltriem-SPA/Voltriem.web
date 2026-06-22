@@ -7,18 +7,15 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  // Cambia este valor por la URL final del sitio.
-  // User page o dominio principal: https://usuario.github.io o https://voltriem.cl
-  // Project page: https://usuario.github.io/voltriem
-  site: 'https://usuario.github.io',
-
-  // Si publicas como project page, descomenta y ajusta esta línea:
-  // base: '/voltriem',
+  site: 'https://voltriem-spa.github.io',
+  base: '/Voltriem.web',
 
   vite: {
     plugins: [tailwindcss()],
   },
+
   integrations: [mdx(), sitemap(), icon()],
+
   fonts: [
     {
       provider: fontProviders.local(),
